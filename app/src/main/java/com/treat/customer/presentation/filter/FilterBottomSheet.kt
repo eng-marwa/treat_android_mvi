@@ -151,7 +151,6 @@ private fun initList() {
     binding.rvSelectedCategories.layoutManager = FlexboxLayoutManager(requireContext())
     binding.rvSelectedCategories.adapter = filterCategoryAdapter
 
-
     binding.rvGender.layoutManager =
         LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     binding.rvGender.adapter = filterGenderAdapter
