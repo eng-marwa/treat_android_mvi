@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/lbServiceType"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="@dimen/_8sdp"
+    android:layout_weight="1"
+    android:background="@drawable/button_outline_background"
+    android:paddingHorizontal="@dimen/_16sdp"
+    android:paddingVertical="@dimen/_8sdp"
+    android:text="@string/yes"
+    android:textAllCaps="true"
+    android:textColor="@color/grayA4"
+    android:textStyle="bold"
+    app:backgroundTint="@null" />

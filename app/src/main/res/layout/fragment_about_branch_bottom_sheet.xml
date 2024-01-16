@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="bottom"
+    android:background="@drawable/curved_rectangle"
+    android:padding="@dimen/_8sdp">
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/lbAbout"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:padding="@dimen/_8sdp"-->
+    <!--        android:text="@string/about_branch"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="@dimen/_12ssp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/lbAboutText"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/lbAboutText"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:padding="@dimen/_8sdp"-->
+    <!--        android:textColor="@color/gray77"-->
+    <!--        android:textSize="@dimen/_12ssp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/lbPhoneNumber"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/lbPhoneNumber"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:padding="@dimen/_8sdp"-->
+    <!--        android:text="@string/phone_number"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="@dimen/_12ssp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/lbPhoneText"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/lbPhoneText"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:padding="@dimen/_8sdp"-->
+    <!--        android:textColor="@color/gray77"-->
+    <!--        android:textSize="@dimen/_12ssp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/lbEmail"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/lbEmail"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:padding="@dimen/_8sdp"-->
+    <!--        android:text="@string/email"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="@dimen/_12ssp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/lbEmailText"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/lbEmailText"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:padding="@dimen/_8sdp"-->
+    <!--        android:textColor="@color/gray77"-->
+    <!--        android:textSize="@dimen/_12ssp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/lbLocation"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/lbLocation"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:padding="@dimen/_8sdp"-->
+    <!--        android:text="@string/location"-->
+    <!--        android:textColor="@color/black"-->
+    <!--        android:textSize="@dimen/_12ssp"-->
+    <!--        android:textStyle="bold"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/lbLocationText"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <!--    <TextView-->
+    <!--        android:id="@+id/lbLocationText"-->
+    <!--        android:layout_width="match_parent"-->
+    <!--        android:layout_height="wrap_content"-->
+    <!--        android:padding="@dimen/_8sdp"-->
+    <!--        android:textColor="@color/gray77"-->
+    <!--        android:textSize="@dimen/_12ssp"-->
+    <!--        app:layout_constraintBottom_toTopOf="@+id/lbOpeningHours"-->
+    <!--        app:layout_constraintEnd_toEndOf="parent"-->
+    <!--        app:layout_constraintStart_toStartOf="parent" />-->
+
+    <TextView
+        android:id="@+id/lbOpeningHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_8sdp"
+        android:text="@string/opening_hours"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/rvOpeningHours"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvOpeningHours"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:padding="@dimen/_8sdp"
+        android:paddingHorizontal="@dimen/_16sdp"
+        android:textColor="@color/gray77"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

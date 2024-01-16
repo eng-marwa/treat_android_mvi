@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "586677943296",
+    "project_id": "treat-a5be5",
+    "storage_bucket": "treat-a5be5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:586677943296:android:797be356760b59f53fece5",
+        "android_client_info": {
+          "package_name": "com.treat.customer"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBF6HHcEvIMRz-CaxrR5SPgs4Q0GPwf9fA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

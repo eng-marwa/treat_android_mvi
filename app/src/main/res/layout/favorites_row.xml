@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/_5sdp"
+    android:background="@drawable/curved_white"
+    android:padding="@dimen/_5sdp">
+
+    <FrameLayout
+        android:id="@+id/frFavorites"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/ivFavorite"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@mipmap/salon"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.roundedImageView" />
+
+        <TextView
+            android:layout_marginTop="@dimen/_5sdp"
+            android:id="@+id/lbOffer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center|top"
+            android:background="@drawable/black_rectangle"
+            android:paddingHorizontal="@dimen/_8sdp"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_8ssp"
+            tools:text="Ryadh" />
+    </FrameLayout>
+
+    <ImageView
+        android:id="@+id/btnFav"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:src="@drawable/bxs_heart"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/lbCity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:padding="@dimen/_2sdp"
+        android:textColor="@color/gray4B"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintStart_toEndOf="@id/frFavorites"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Ryadh" />
+
+    <TextView
+        android:id="@+id/lbFavoriteSalon"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:padding="@dimen/_2sdp"
+        android:textColor="@color/gray4B"
+        android:textSize="@dimen/_11ssp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/frFavorites"
+        app:layout_constraintTop_toBottomOf="@+id/lbCity"
+        tools:text="Tacha Beauty Center" />
+
+    <TextView
+        android:id="@+id/lbRate"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:drawablePadding="@dimen/_2sdp"
+        android:padding="@dimen/_2sdp"
+        android:textColor="@color/orangeB2"
+        android:textSize="@dimen/_11ssp"
+        android:textStyle="bold"
+        app:drawableStartCompat="@drawable/bx_star"
+        app:layout_constraintStart_toEndOf="@id/frFavorites"
+        app:layout_constraintTop_toBottomOf="@+id/lbFavoriteSalon"
+        tools:text="4.7" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:padding="@dimen/_2sdp"
+        android:textColor="@color/gray77"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintStart_toEndOf="@id/lbRate"
+        app:layout_constraintTop_toBottomOf="@+id/lbFavoriteSalon"
+        tools:text="(62)" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

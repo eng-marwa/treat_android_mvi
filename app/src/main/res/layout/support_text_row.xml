@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/expandedListItem"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_10sdp"
+    android:background="@drawable/curved_bg"
+    app:backgroundTint="@color/white"
+    android:layout_marginBottom="@dimen/_16sdp"
+    android:textColor="@color/black"
+    android:textSize="@dimen/_11ssp" />

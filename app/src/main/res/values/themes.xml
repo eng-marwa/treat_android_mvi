@@ -4,6 +4,44 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
+    <style name="NoActionBar" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="android:windowFullscreen">true</item>
 
+    </style>
     <style name="Theme.TreatCustomer" parent="Base.Theme.TreatCustomer" />
+
+    <style name="Theme.TreatCustomer.Button">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textAllCaps">true</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.roundedImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">15%</item>
+    </style>
+    <style name="ShapeAppearanceOverlay.App.circleImageView" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="DropDown" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense.ExposedDropdownMenu">
+        <item name="android:background">@drawable/curved_rectangle</item>
+        <item name="android:textColor">@color/gray4B</item>
+        <item name="android:textSize">@dimen/_12ssp</item>
+        <item name="android:textAllCaps">false</item>
+        <item name="boxBackgroundColor">@color/white</item>
+        <item name="boxStrokeColor">@android:color/white</item>
+
+    </style>
+    <style name="TabLayoutStyle" parent="Base.Widget.Design.TabLayout">
+        <item name="android:textSize">@dimen/_11ssp</item>
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="CustomDialogTheme">
+        <item name="android:background">@color/grayF6</item>
+    </style>
 </resources>

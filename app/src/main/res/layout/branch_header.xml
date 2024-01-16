@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/_5sdp"
+    android:padding="@dimen/_5sdp">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivBranch"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        android:adjustViewBounds="true"
+        android:src="@mipmap/salon"
+        android:scaleType="center"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.circleImageView" />
+
+
+    <TextView
+        android:id="@+id/lbAbout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textColor="@color/gray77"
+        android:textStyle="bold"
+        android:text="@string/about"
+        android:drawablePadding="@dimen/_8sdp"
+        android:drawableStart="@drawable/eyes_about"
+        tools:ignore="ContentDescription" />
+
+
+    <TextView
+        android:id="@+id/lbBranchName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:padding="@dimen/_2sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_11ssp"
+        android:textStyle="bold"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ivBranch"
+        tools:text="Tacha Beauty Center" />
+
+
+    <TextView
+        android:id="@+id/lbAddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:padding="@dimen/_2sdp"
+        android:textColor="@color/gray77"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintStart_toEndOf="@id/ivBranch"
+        app:layout_constraintTop_toBottomOf="@+id/lbBranchName"
+        tools:text="127 north moon, ryadh, 33510" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

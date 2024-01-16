@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/item_navigation">
+
+    <fragment
+        android:id="@+id/navigation_change_language"
+        android:name="com.treat.customer.presentation.main.ui.more.languages.ChangeLanguageFragment"
+        android:label="fragment_change_language"
+        tools:layout="@layout/fragment_change_language" >
+        <action
+            android:id="@+id/action_navigation_change_language_to_navigation_notification"
+            app:destination="@id/navigation_notification" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_contact_us"
+        android:name="com.treat.customer.presentation.main.ui.more.contact_us.ContactUsFragment"
+        android:label="fragment_contact_us"
+        tools:layout="@layout/fragment_contact_us" >
+        <action
+            android:id="@+id/action_navigation_contact_us_to_navigation_notification"
+            app:destination="@id/navigation_notification" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_edit_profile"
+        android:name="com.treat.customer.presentation.main.ui.more.edit_profile.EditProfileFragment"
+        android:label="fragment_edit_profile"
+        tools:layout="@layout/fragment_edit_profile" >
+        <action
+            android:id="@+id/action_navigation_edit_profile_to_navigation_notification"
+            app:destination="@id/navigation_notification" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_fqa"
+        android:name="com.treat.customer.presentation.main.ui.more.fqa.FQAFragment"
+        android:label="fragment_f_q_a"
+        tools:layout="@layout/fragment_f_q_a" >
+        <action
+            android:id="@+id/action_navigation_fqa_to_navigation_notification"
+            app:destination="@id/navigation_notification" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_my_points"
+        android:name="com.treat.customer.presentation.main.ui.more.my_points.MyPointsFragment"
+        android:label="fragment_my_points"
+        tools:layout="@layout/fragment_my_points" >
+        <action
+            android:id="@+id/action_navigation_my_points_to_navigation_notification"
+            app:destination="@id/navigation_notification" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_my_booking"
+        android:name="com.treat.customer.presentation.main.my_booking.MyBookingFragment"
+        android:label="fragment_my_booking"
+        tools:layout="@layout/fragment_my_booking" >
+        <action
+            android:id="@+id/action_navigation_my_booking_to_navigation_notification"
+            app:destination="@id/navigation_notification" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_my_wallet"
+        android:name="com.treat.customer.presentation.main.ui.more.my_wallet.MyWalletFragment"
+        android:label="fragment_my_wallet"
+        tools:layout="@layout/fragment_my_wallet" >
+        <action
+            android:id="@+id/action_navigation_my_wallet_to_navigation_notification"
+            app:destination="@id/navigation_notification" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_notification"
+        android:name="com.treat.customer.presentation.main.notification.NotificationFragment"
+        android:label="fragment_notification"
+        tools:layout="@layout/fragment_notification" />
+    <fragment
+        android:id="@+id/navigation_terms_condition"
+        android:name="com.treat.customer.presentation.main.ui.more.terms.TermsAndConditionsFragment"
+        android:label="fragment_terms_and_conditions"
+        tools:layout="@layout/fragment_terms_and_conditions" >
+        <action
+            android:id="@+id/action_navigation_terms_condition_to_navigation_notification"
+            app:destination="@id/navigation_notification" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_branch_details"
+        android:name="com.treat.customer.presentation.main.ui.branches.BranchDetailsFragment"
+        android:label="fragment_branch_details"
+        tools:layout="@layout/fragment_branch_details" />
+
+</navigation>

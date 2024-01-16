@@ -1,0 +1,256 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grayF6"
+    android:paddingHorizontal="@dimen/_20sdp"
+    tools:context=".presentation.main.ui.more.edit_profile.EditProfileFragment">
+
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/menu_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/titleToolBar"
+        layout="@layout/menu_title_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true"
+        app:layout_constraintTop_toBottomOf="@+id/titleToolBar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:orientation="vertical">
+
+
+            <TextView
+                android:id="@+id/lbName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/full_name"
+                android:textColor="@color/gray4B"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/frName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/curved_rectangle"
+                android:backgroundTint="@color/white"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_5sdp">
+
+                <EditText
+                    android:id="@+id/etName"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:gravity="start"
+                    android:hint="@string/name"
+                    android:inputType="text"
+                    android:textColor="@color/gray77"
+                    android:textSize="@dimen/_11ssp"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <ImageView
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_gravity="end|center"
+                    android:src="@drawable/profile"
+                    tools:ignore="ContentDescription" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/lbPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/phone_number"
+                android:textColor="@color/gray4B"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/frPhoneNumber"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/curved_rectangle"
+                android:backgroundTint="@color/white"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@+id/lbPhoneNumber">
+
+                <EditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:gravity="start"
+                    android:hint="@string/phone_number"
+                    android:inputType="phone"
+                    android:textColor="@color/gray77"
+                    android:textSize="@dimen/_11ssp"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <ImageView
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_gravity="end|center"
+                    android:src="@drawable/phone_number"
+                    tools:ignore="ContentDescription" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/lbEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/email"
+                android:textColor="@color/gray4B"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/frEmail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/curved_rectangle"
+                android:backgroundTint="@color/white"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_5sdp"
+                app:layout_constraintTop_toBottomOf="@+id/lbEmail">
+
+                <EditText
+                    android:id="@+id/etEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:backgroundTint="@color/white"
+                    android:gravity="start"
+                    android:hint="@string/email"
+                    android:inputType="text"
+                    android:textColor="@color/gray77"
+                    android:textSize="@dimen/_11ssp"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <ImageView
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_gravity="end|center"
+                    android:src="@drawable/email"
+                    tools:ignore="ContentDescription" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/lbGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/gender"
+                android:textColor="@color/gray4B"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/frGender"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/curved_rectangle"
+                android:backgroundTint="@color/white"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_5sdp">
+
+                <TextView
+                    android:id="@+id/etGender"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:backgroundTint="@color/white"
+                    android:hint="@string/gender"
+                    android:textColor="@color/gray77"
+                    android:textSize="@dimen/_11ssp"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <ImageView
+                    android:id="@+id/btnMenu"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_gravity="end|center"
+                    android:src="@drawable/arrow"
+                    tools:ignore="ContentDescription" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/lbDateOfBirth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/date_of_birth"
+                android:textColor="@color/gray4B"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/frDateOfBirth"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:background="@drawable/curved_rectangle"
+                android:backgroundTint="@color/white"
+                android:paddingHorizontal="@dimen/_5sdp"
+                android:paddingVertical="@dimen/_5sdp">
+
+                <TextView
+                    android:id="@+id/etBirthDate"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:backgroundTint="@color/white"
+                    android:hint="01/01/2024"
+                    android:textColor="@color/gray77"
+                    android:textSize="@dimen/_11ssp"
+                    tools:ignore="Autofill,LabelFor" />
+
+                <ImageView
+                    android:id="@+id/ivBirthDate"
+                    android:layout_width="@dimen/_35sdp"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_gravity="end|center"
+                    android:src="@drawable/calender"
+                    tools:ignore="ContentDescription" />
+            </FrameLayout>
+
+            <Button
+                android:id="@+id/btnConfirm"
+                style="@style/Theme.TreatCustomer.Button"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_30sdp"
+                android:background="@drawable/button_background"
+                android:paddingVertical="@dimen/_3sdp"
+                android:text="@string/confirm"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                app:backgroundTint="@color/gray4B"
+                app:layout_constraintBottom_toTopOf="@+id/btnBack" />
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>

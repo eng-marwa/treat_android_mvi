@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grayF6">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        tools:context=".presentation.main.ui.branches.BranchDetailsFragment">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:id="@+id/frBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.smarteist.autoimageslider.SliderView
+                    android:id="@+id/imageSlider"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_200sdp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:sliderAnimationDuration="300"
+                    app:sliderAutoCycleDirection="right"
+                    app:sliderAutoCycleEnabled="true"
+                    app:sliderIndicatorAnimationDuration="600"
+                    app:sliderIndicatorGravity="center_horizontal|bottom"
+                    app:sliderIndicatorMargin="@dimen/_30sdp"
+                    app:sliderIndicatorOrientation="horizontal"
+                    app:sliderIndicatorPadding="2dp"
+                    app:sliderIndicatorRadius="2dp"
+                    app:sliderIndicatorSelectedColor="#5A5A5A"
+                    app:sliderIndicatorUnselectedColor="#FFF"
+                    app:sliderScrollTimeInSec="3"
+                    app:sliderStartAutoCycle="true" />
+
+                <ImageView
+                    android:id="@+id/ivBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|start"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginStart="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:src="@drawable/back" />
+
+                <ImageView
+                    android:id="@+id/btnFavoriteBranch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="top|end"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:src="@drawable/fav" />
+
+                <TextView
+                    android:id="@+id/lbRateBranch"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="@dimen/_8sdp"
+                    android:layout_marginBottom="@dimen/_16sdp"
+                    android:layout_marginHorizontal="@dimen/_8sdp"
+                    android:background="@drawable/rate_rectangle"
+                    android:drawablePadding="@dimen/_3sdp"
+                    android:gravity="center"
+                    android:paddingHorizontal="@dimen/_5sdp"
+                    android:textColor="@color/gray77"
+                    android:textSize="@dimen/_11ssp"
+                    android:textStyle="bold"
+                    app:drawableStartCompat="@drawable/bx_star"
+                    tools:text="4.9" />
+            </FrameLayout>
+
+
+            <TextView
+                android:id="@+id/lbBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/gray77"
+                android:padding="@dimen/_5sdp"
+                android:textAllCaps="true"
+                android:gravity="center"
+                android:textColor="@color/white" />
+
+
+            <include
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:id="@+id/branchHeaderLayout"
+                layout="@layout/branch_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <!--            <com.google.android.material.button.MaterialButtonToggleGroup-->
+            <!--                android:id="@+id/toggleGroup"-->
+            <!--                android:layout_width="match_parent"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                app:checkedButton="@+id/button1"-->
+            <!--                android:gravity="center"-->
+            <!--                app:singleSelection="true">-->
+
+            <!--                <Button-->
+            <!--                    android:id="@+id/btnBook"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="@dimen/_45sdp"-->
+            <!--                    android:text="@string/book"-->
+            <!--                    android:minWidth="@dimen/_110sdp"-->
+            <!--                    android:paddingHorizontal="@dimen/_16sdp"-->
+            <!--                    android:paddingVertical="@dimen/_5sdp"-->
+            <!--                    android:textAllCaps="false"-->
+            <!--                    android:textStyle="normal"-->
+            <!--                    android:textColor="@color/white"-->
+            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                    app:backgroundTint="@color/gray4B"-->
+            <!--                    />-->
+
+            <!--                <com.google.android.material.button.MaterialButton-->
+            <!--                    android:id="@+id/btnSendGift"-->
+            <!--                    android:layout_width="wrap_content"-->
+            <!--                    android:layout_height="@dimen/_45sdp"-->
+            <!--                    android:text="@string/send_gift"-->
+            <!--                    android:minWidth="@dimen/_110sdp"-->
+            <!--                    android:paddingHorizontal="@dimen/_16sdp"-->
+            <!--                    android:paddingVertical="@dimen/_5sdp"-->
+            <!--                    android:textAllCaps="false"-->
+            <!--                    android:textStyle="normal"-->
+            <!--                    android:textColor="@color/gray4A"-->
+            <!--                    app:icon="@drawable/bx_gift"-->
+            <!--                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"-->
+            <!--                    app:backgroundTint="@color/grayEB"/>-->
+
+
+            <!--            </com.google.android.material.button.MaterialButtonToggleGroup>-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@drawable/button_background"
+                android:backgroundTint="@color/grayEB"
+                android:orientation="horizontal"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:weightSum="2"
+                app:backgroundTint="@color/grayEB">
+
+                <Button
+                    android:id="@+id/btnBook"
+                    style="@style/Theme.TreatCustomer.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="start"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_background"
+                    android:minWidth="@dimen/_120sdp"
+                    android:paddingHorizontal="@dimen/_16sdp"
+                    android:text="@string/book"
+                    android:textAllCaps="false"
+                    android:textStyle="normal"
+                    app:backgroundTint="@color/gray4B" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSendGift"
+                    style="@style/Theme.TreatCustomer.Button"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/button_outline_background"
+                    android:minWidth="@dimen/_120sdp"
+                    android:paddingHorizontal="@dimen/_16sdp"
+                    android:paddingVertical="@dimen/_3sdp"
+                    android:text="@string/send_gift"
+                    android:textAllCaps="false"
+                    android:textColor="@color/gray77"
+                    android:textStyle="normal"
+                    app:backgroundTint="@color/grayEB"
+                    app:icon="@drawable/bx_gift"
+                    app:iconGravity="textStart"
+                    app:iconTint="@color/gray4A" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/lbGender"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:text="@string/our_services"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCategories"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/service_type" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvServices"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginHorizontal="@dimen/_8sdp"
+                android:orientation="vertical"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="3"
+                tools:listitem="@layout/service_row" />
+
+        </androidx.appcompat.widget.LinearLayoutCompat>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_80sdp"
+        android:background="@color/white"
+        android:paddingHorizontal="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:id="@+id/lnTotal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <TextView
+                android:id="@+id/lbTotal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:layout_marginEnd="@dimen/_5sdp"
+                android:text="@string/total"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/lbServicesCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:textColor="@color/gray77"
+                android:textSize="@dimen/_12ssp"
+                android:textStyle="bold"
+                tools:text="(0 services)" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/lbPrice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:textColor="@color/orangeB2"
+            android:textSize="@dimen/_12ssp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/lnTotal"
+            tools:text="SAR" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBookNow"
+            style="@style/Theme.TreatCustomer.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_background"
+            android:minWidth="@dimen/_110sdp"
+            android:paddingHorizontal="@dimen/_16sdp"
+            android:paddingVertical="@dimen/_3sdp"
+            android:text="@string/book"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            app:backgroundTint="@color/gray4B"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

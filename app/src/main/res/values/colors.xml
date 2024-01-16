@@ -2,4 +2,19 @@
 <resources>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="gradient_start">#4A5A51</color>
+    <color name="gradient_end">#607569</color>
+    <color name="green5E">#5EAF82</color>
+    <color name="back05">#050505</color>
+    <color name="green3D">#3D9635</color>
+    <color name="gray77">#777777</color>
+    <color name="gray4A">#4A5A51</color>
+    <color name="gray4B">#4B5B52</color>
+    <color name="grayF6">#F6F6F6</color>
+    <color name="grayEB">#EBEBEB</color>
+    <color name="red">#FF0000</color>
+    <color name="orangeB2">#B2866B</color>
+    <color name="redD4">#d46a6a</color>
+    <color name="auth_green">#3D9635</color>
+    <color name="grayA4">#A4ADA8</color>
 </resources>

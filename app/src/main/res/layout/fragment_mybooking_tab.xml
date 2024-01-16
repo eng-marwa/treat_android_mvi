@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_16sdp"
+    android:background="@drawable/curved_rectangle"
+    android:backgroundTint="@color/white"
+    android:padding="@dimen/_8sdp">
+
+    <TableLayout
+        android:id="@+id/tbMyBooking"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_3sdp">
+
+            <TextView
+                android:id="@+id/lbName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/name"
+                android:textColor="@color/gray77"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/lbNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp" />
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_3sdp">
+
+            <TextView
+                android:id="@+id/lbOrderId"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/order_id"
+                android:textColor="@color/gray77"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/lbOrderIdText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_3sdp">
+
+            <TextView
+                android:id="@+id/lbAppointment"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/appointment"
+                android:textColor="@color/gray77"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/lbAppointmentText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_3sdp">
+
+            <TextView
+                android:id="@+id/lbBookingDate"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/booking_date"
+                android:textColor="@color/gray77"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/lbBookingDateText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11ssp" />
+
+        </TableRow>
+
+        <TableRow
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_3sdp">
+
+            <TextView
+                android:id="@+id/lbStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/status"
+                android:textColor="@color/gray77"
+                android:textSize="@dimen/_12ssp" />
+
+            <TextView
+                android:id="@+id/lbStatusText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/green3D"
+                android:textSize="@dimen/_11ssp" />
+
+        </TableRow>
+    </TableLayout>
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:id="@+id/lnTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tbMyBooking">
+
+        <TextView
+            android:id="@+id/lbServiceName"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/service"
+            android:textColor="@color/gray77"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:id="@+id/lbStartTime"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/start_time"
+            android:textColor="@color/gray77"
+            android:textSize="@dimen/_12ssp" />
+
+        <TextView
+            android:id="@+id/lbServiceTotal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="@string/total"
+            android:textColor="@color/gray77"
+            android:textSize="@dimen/_12ssp" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvServices"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/_8sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lnTitle" />
+
+    <ImageView
+        android:id="@+id/lineDivider"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_5sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:src="@drawable/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/rvServices" />
+
+    <TextView
+        android:id="@+id/lbDiscount"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/discount"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineDivider" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/total"
+        android:textColor="@color/orangeB2"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineDivider" />
+
+    <ImageView
+        android:id="@+id/lineDivider1"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_5sdp"
+        android:layout_marginVertical="@dimen/_8sdp"
+        android:src="@drawable/line"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbDiscount" />
+
+    <TextView
+        android:id="@+id/lbTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/total"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineDivider1" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:text="@string/total"
+        android:textColor="@color/orangeB2"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lineDivider1" />
+
+    <androidx.appcompat.widget.LinearLayoutCompat
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbTotal">
+
+        <Button
+            android:id="@+id/btnDownload"
+            style="@style/Theme.TreatCustomer.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:background="@drawable/button_background"
+            android:minWidth="@dimen/_200sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            android:text="@string/download_receipt"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            app:backgroundTint="@color/gray4B"
+            app:layout_constraintBottom_toTopOf="@+id/btnBack" />
+
+        <Button
+            android:id="@+id/btnShare"
+            style="@style/Widget.MaterialComponents.Button.Icon"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:background="@drawable/outline_button_background"
+            android:minWidth="@dimen/_35sdp"
+            android:paddingVertical="@dimen/_5sdp"
+            app:backgroundTint="@null"
+            app:icon="@drawable/bx_share_alt"
+            app:iconTint="@color/gray77"
+            app:layout_constraintBottom_toTopOf="@+id/btnBack" />
+    </androidx.appcompat.widget.LinearLayoutCompat>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/_16sdp"
+    android:background="@drawable/curved_rectangle"
+    android:backgroundTint="@color/white"
+    android:padding="@dimen/_12sdp">
+
+    <LinearLayout
+        android:id="@+id/lnTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/listTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:paddingVertical="@dimen/_5sdp"
+            android:textColor="@color/gray4B"
+            android:textSize="@dimen/_12ssp" />
+
+        <ImageView
+            android:id="@+id/ivDropDown"
+            android:layout_width="@dimen/_10sdp"
+            android:layout_height="@dimen/_10sdp"
+            android:layout_gravity="center_vertical"
+            android:src="@drawable/bx_chevron_down"
+            app:tint="@color/gray4B" />
+    </LinearLayout>
+
+
+    <TextView
+        android:id="@+id/listText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/lnTitle"
+        android:minLines="2"
+        android:paddingVertical="@dimen/_5sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12ssp"
+        android:visibility="gone"
+        tools:text="text"
+        tools:visibility="visible" />
+</RelativeLayout>

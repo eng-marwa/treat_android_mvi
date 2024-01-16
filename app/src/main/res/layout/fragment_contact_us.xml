@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/grayF6"
+    android:paddingHorizontal="@dimen/_20sdp"
+    tools:context=".presentation.main.ui.more.contact_us.ContactUsFragment">
+
+    <include
+        android:id="@+id/toolBar"
+        layout="@layout/menu_toolbar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <include
+        android:id="@+id/titleToolBar"
+        layout="@layout/menu_title_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/toolBar" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnWhatsApp"
+        style="@style/Theme.TreatCustomer.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:background="@drawable/button_background"
+        android:paddingVertical="@dimen/_3sdp"
+        android:text="@string/whats"
+        android:textAllCaps="true"
+        android:textStyle="bold"
+        app:backgroundTint="@color/gray4B"
+        app:icon="@drawable/bxl_whatsapp"
+        app:iconGravity="textStart"
+        app:iconTint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/titleToolBar" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnEmail"
+        style="@style/Theme.TreatCustomer.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@drawable/button_outline_background"
+        android:paddingVertical="@dimen/_3sdp"
+        android:text="@string/email"
+        android:textAllCaps="true"
+        android:textColor="@color/gray4B"
+        android:textStyle="bold"
+        app:backgroundTint="@null"
+        app:icon="@drawable/bx_envelope"
+        app:iconGravity="textStart"
+        app:iconTint="@color/gray4B"
+        app:layout_constraintTop_toBottomOf="@+id/btnWhatsApp" />
+</androidx.constraintlayout.widget.ConstraintLayout>
