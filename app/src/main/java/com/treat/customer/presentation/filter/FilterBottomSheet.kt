@@ -147,7 +147,6 @@ private fun initList() {
     binding.rvServiceType.layoutManager =
         LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
     binding.rvServiceType.adapter = serviceTypeAdapter
-
     binding.rvSelectedCategories.layoutManager = FlexboxLayoutManager(requireContext())
     binding.rvSelectedCategories.adapter = filterCategoryAdapter
 
