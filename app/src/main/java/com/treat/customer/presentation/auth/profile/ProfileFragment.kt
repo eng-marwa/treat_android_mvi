@@ -215,6 +215,7 @@ class ProfileFragment : Fragment(), GenderBottomSheet.GenderSelect,
 
     override fun onLocationResult(latitude: Double, longitude: Double) {
         Log.d("Location", "Latitude: $latitude, Longitude: $longitude")
+        locationViewModel.saveLocation(latitude,longitude)
         locationViewModel.updateLocation(latitude, longitude)
 
     }

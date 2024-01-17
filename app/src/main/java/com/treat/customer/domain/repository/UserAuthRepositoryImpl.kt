@@ -88,6 +88,15 @@ class UserAuthRepositoryImpl(
         preferenceHelper.gender = gender
     }
 
+    override fun saveUserLocation(lat: Double, lon: Double) {
+        preferenceHelper.location = "$lat,$lon"
+    }
+
+    override fun getSavedLocation(): String? {
+        return preferenceHelper.location
+    }
+
+
     override fun getSavedGender(): GenderData? {
         return preferenceHelper.gender
     }

@@ -100,8 +100,13 @@ class ITemActivity : AppCompatActivity() {
                 }
             }
 
-            R.string.title_notifications ->{
+            R.string.title_notifications -> {
                 navGraph.setStartDestination(R.id.navigation_notification)
+                navController.graph = navGraph
+            }
+
+            R.string.location_branch -> {
+                navGraph.setStartDestination(R.id.navigation_branch_location)
                 navController.graph = navGraph
             }
 

@@ -318,6 +318,12 @@ class HomeFragment : Fragment(), ServiceTypeAdapter.OnItemClick, FilterBottomShe
             )
         }
         binding.searchLayout.ivLocation.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), ITemActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                }.putExtra("ITEM", R.string.location_branch)
+            )
         }
         binding.toolBar.frNotification.setOnClickListener {
             startActivity(

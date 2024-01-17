@@ -1,4 +1,4 @@
-package com.treat.customer.domain.usecases.auth
+package com.treat.customer.domain.usecases.location
 
 import android.content.Context
 import android.location.LocationManager

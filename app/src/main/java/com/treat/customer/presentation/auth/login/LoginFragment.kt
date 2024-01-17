@@ -1,5 +1,6 @@
 package com.treat.customer.presentation.auth.login
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +15,7 @@ import com.treat.customer.base.BaseException
 import com.treat.customer.base.BaseViewModel
 import com.treat.customer.data.model.LoginResponse
 import com.treat.customer.databinding.FragmentLoginBinding
+import com.treat.customer.presentation.main.HomeActivity
 import com.treat.customer.utils.extensions.hideKeyboard
 import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
@@ -58,7 +60,7 @@ class LoginFragment : Fragment() {
     }
 
     private fun onLoginFailed(throwable: BaseException?) {
-        if(throwable?.getMessage() == "INVALID_PHONE_ERROR"){
+        if (throwable?.getMessage() == "INVALID_PHONE_ERROR") {
             showSnack(
                 binding.root,
                 getString(R.string.invalid_phone_error_message),
@@ -68,7 +70,7 @@ class LoginFragment : Fragment() {
                 buttonTitle = null,
                 onClick = null
             )
-        }else {
+        } else {
             showSnack(
                 binding.root,
                 throwable?.getMessage(),
@@ -108,6 +110,16 @@ class LoginFragment : Fragment() {
             } else {
                 viewModel.doLogin(binding.etPhoneNumber.text.toString())
             }
+        }
+
+        binding.lbAsGuest.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), HomeActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                }
+            )
+            activity?.finish()
         }
         hideKeyboard()
 

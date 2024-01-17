@@ -17,6 +17,7 @@ class MenuAdapter(private var itemClicked: MenuAdapter.OnItemClick? = null) :
     RecyclerView.Adapter<MenuAdapter.MenuItemHolder>() {
 
 
+    private var menuItems: List<Menu> = arrayListOf()
     private var selectedMenu: Menu? = null
 
     inner class MenuItemHolder(private val binding: MenuItemBinding) : ViewHolder(binding.root) {
@@ -47,12 +48,17 @@ class MenuAdapter(private var itemClicked: MenuAdapter.OnItemClick? = null) :
         )
 
     override fun onBindViewHolder(holder: MenuItemHolder, position: Int) {
-        val type = menuItems[position]
+        val type = this.menuItems[position]
         holder.bindDataToView(type, position)
         holder.onEvent(type)
     }
 
-    override fun getItemCount(): Int = menuItems.size
+    override fun getItemCount(): Int = this.menuItems.size
+    fun setData(menuItems: List<Menu>) {
+        this.menuItems = menuItems
+        notifyDataSetChanged()
+    }
+
     interface OnItemClick {
         fun itemSelected(item: Menu)
     }

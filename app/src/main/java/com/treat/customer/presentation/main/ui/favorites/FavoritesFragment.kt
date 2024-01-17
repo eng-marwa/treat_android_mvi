@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.treat.customer.MainActivity
 import com.treat.customer.R
 import com.treat.customer.base.BaseException
 import com.treat.customer.base.BaseViewModel
@@ -17,13 +18,14 @@ import com.treat.customer.data.model.BranchesData
 import com.treat.customer.data.model.BranchesResponse
 import com.treat.customer.databinding.FragmentFavoritesBinding
 import com.treat.customer.presentation.ITemActivity
+import com.treat.customer.presentation.auth.login.LoginViewModel
 import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class FavoritesFragment : Fragment(), FavoritesAdapter.OnItemClick  {
+class FavoritesFragment : Fragment(), FavoritesAdapter.OnItemClick {
 
     companion object {
         fun newInstance() = FavoritesFragment()
@@ -32,6 +34,7 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.OnItemClick  {
     private var _binding: FragmentFavoritesBinding? = null
     private val binding get() = _binding!!
     private val viewModel: FavoritesViewModel by viewModel<FavoritesViewModel>()
+    private val authViewModel: LoginViewModel by viewModel<LoginViewModel>()
     private val favoritesViewModel: FavoritesViewModel by viewModel<FavoritesViewModel>()
 
     override fun onCreateView(
@@ -41,9 +44,11 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.OnItemClick  {
         _binding = FragmentFavoritesBinding.inflate(inflater, container, false)
         return binding.root
     }
+
     private val branchAdapter by lazy {
         FavoritesAdapter(this)
     }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initViews()
@@ -52,17 +57,17 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.OnItemClick  {
 
     private fun observeViewModel() {
         binding.loader.show()
-            lifecycleScope.launch {
-                delay(100)
-                viewModel.favoriteBranch.collect {
-                    when (it) {
-                        is BaseViewModel.ViewState.Loaded -> onFavoriteBranchSuccess(it.data)
-                        is BaseViewModel.ViewState.Failed -> onFavoriteBranchFailed(it.throwable)
-                        else -> {
-                            binding.loader.show()
-                        }
+        lifecycleScope.launch {
+            delay(100)
+            viewModel.favoriteBranch.collect {
+                when (it) {
+                    is BaseViewModel.ViewState.Loaded -> onFavoriteBranchSuccess(it.data)
+                    is BaseViewModel.ViewState.Failed -> onFavoriteBranchFailed(it.throwable)
+                    else -> {
+                        binding.loader.show()
                     }
                 }
+            }
         }
     }
 
@@ -76,29 +81,47 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.OnItemClick  {
             showButton = false,
             buttonTitle = null,
             onClick = null
-        )    }
+        )
+    }
 
     private fun onFavoriteBranchSuccess(data: BranchesResponse?) {
         binding.loader.hide()
-       data?.let {
-           if(it.data!=null) {
-               branchAdapter.setBranches(it.data!!.branches)
-           }
-       }
+        data?.let {
+            if (it.data != null) {
+                branchAdapter.setBranches(it.data!!.branches)
+            }
+        }
     }
 
     private fun initViews() {
-        viewModel.getFavoriteBranches()
+        if (authViewModel.getUserData()?.data?.token == null) {
+            binding.frNotAuth.visibility = View.VISIBLE
+            binding.frContainer.visibility = View.GONE
+        } else {
+            viewModel.getFavoriteBranches()
+            binding.frNotAuth.visibility = View.GONE
+            binding.frContainer.visibility = View.VISIBLE
+        }
+        binding.unAuthLayout.btnLogin.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), MainActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                }.putExtra("Fragment", R.string.title_favorites)
+            )
+        }
         binding.toolBar.frNotification.setOnClickListener {
             startActivity(
                 Intent(requireContext(), ITemActivity::class.java).apply {
                     addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
                     addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
                 }.putExtra("ITEM", R.string.title_notifications)
-            )        }
+            )
+        }
         setupAppBar()
         initList()
     }
+
     private fun setupAppBar() {
         binding.titleToolBar.lbTitle.setText(R.string.title_favorites)
         binding.titleToolBar.ivBack.visibility = View.VISIBLE
@@ -111,6 +134,7 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.OnItemClick  {
         binding.rvFavorites.layoutManager = LinearLayoutManager(requireContext())
         binding.rvFavorites.adapter = branchAdapter
     }
+
     override fun itemSelected(item: Branches) {
         startActivity(
             Intent(requireContext(), ITemActivity::class.java).apply {

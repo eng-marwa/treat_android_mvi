@@ -1,5 +1,6 @@
 package com.treat.customer.presentation.main.notification
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.treat.customer.MainActivity
 import com.treat.customer.R
 import com.treat.customer.base.BaseException
 import com.treat.customer.base.BaseViewModel
@@ -14,6 +16,7 @@ import com.treat.customer.data.model.NotificationResponse
 import com.treat.customer.data.model.Notifications
 import com.treat.customer.data.model.TreatResponse
 import com.treat.customer.databinding.FragmentNotificationBinding
+import com.treat.customer.presentation.auth.login.LoginViewModel
 import com.treat.customer.utils.extensions.showSnack
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -24,6 +27,7 @@ class NotificationFragment : Fragment(), NotificationAdapter.OnItemClick {
     companion object {
         fun newInstance() = NotificationFragment()
     }
+    private val authViewModel: LoginViewModel by viewModel<LoginViewModel>()
 
     private val notificationAdapter by lazy {
         NotificationAdapter()
@@ -166,7 +170,7 @@ class NotificationFragment : Fragment(), NotificationAdapter.OnItemClick {
     private fun onNotificationsSuccess(data: NotificationResponse?) {
         binding.loader.hide()
         data?.let { data ->
-            data.data?.let { it ->
+            data.data?.let {
                 notificationAdapter.setData(it.notifications)
                 if (it.count == 0) {
                     binding.toolBar.lbNotificationCount.visibility = View.GONE
@@ -177,17 +181,29 @@ class NotificationFragment : Fragment(), NotificationAdapter.OnItemClick {
                 }
             }
         }
-
-
     }
-
     private fun initViews() {
-        initList()
-        setupAppBar()
-        viewModel.getNotifications()
+        if (authViewModel.getUserData()?.data?.token == null) {
+            binding.container.visibility = View.GONE
+            binding.frNotification.visibility = View.VISIBLE
+        } else {
+            binding.container.visibility = View.VISIBLE
+            binding.frNotification.visibility = View.GONE
+            viewModel.getNotifications()
+        }
         binding.lbMarkAsRead.setOnClickListener {
             viewModel.markAllNotificationsRead()
         }
+        binding.unAuthLayout.btnLogin.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), MainActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                }.putExtra("Fragment", R.string.title_notifications)
+            )
+        }
+        initList()
+        setupAppBar()
     }
 
     private fun initList() {

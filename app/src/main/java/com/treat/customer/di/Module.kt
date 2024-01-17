@@ -37,7 +37,7 @@ import com.treat.customer.domain.usecases.auth.ResendOTPUseCase
 import com.treat.customer.domain.usecases.auth.SaveGenderUseCase
 import com.treat.customer.domain.usecases.auth.SaveUserDataUseCase
 import com.treat.customer.domain.usecases.auth.SetLoginStatusUseCase
-import com.treat.customer.domain.usecases.auth.UpdateLocationUseCase
+import com.treat.customer.domain.usecases.location.UpdateLocationUseCase
 import com.treat.customer.domain.usecases.auth.UpdateUserProfileUseCase
 import com.treat.customer.domain.usecases.auth.UserLoginUseCase
 import com.treat.customer.domain.usecases.auth.VerifyAccountUseCase
@@ -51,12 +51,16 @@ import com.treat.customer.domain.usecases.home.GetHomeSliderUseCase
 import com.treat.customer.domain.usecases.home.GetServiceCategoriesUseCase
 import com.treat.customer.domain.usecases.home.GetServiceTypesUseCase
 import com.treat.customer.domain.usecases.home.GetSpecificServicesUseCase
+import com.treat.customer.domain.usecases.location.GetSavedUserLocationUseCase
+import com.treat.customer.domain.usecases.location.SaveUserLocationUseCase
 import com.treat.customer.domain.usecases.more.GetAppSettingsUseCase
 import com.treat.customer.domain.usecases.more.GetFQAUseCase
 import com.treat.customer.domain.usecases.more.GetMyPointsUseCase
 import com.treat.customer.domain.usecases.more.GetMyWalletUseCase
 import com.treat.customer.domain.usecases.more.TransferPointsToWalletUseCase
 import com.treat.customer.domain.usecases.notifications.GetNotificationUseCase
+import com.treat.customer.domain.usecases.notifications.MarkAllNotificationsReadUseCase
+import com.treat.customer.domain.usecases.notifications.MarkOneNotificationReadUseCase
 import com.treat.customer.presentation.auth.login.LoginViewModel
 import com.treat.customer.presentation.auth.otp.OTViewModel
 import com.treat.customer.presentation.auth.profile.ProfileViewModel
@@ -80,7 +84,7 @@ val viewModelModule = module {
     viewModel { LoginViewModel(get(), get(), get(), get()) }
     viewModel { OTViewModel(get(), get()) }
     viewModel { ProfileViewModel(get(), get(), get(), get(), get()) }
-    viewModel { LocationViewModel(get()) }
+    viewModel { LocationViewModel(get(), get(), get()) }
     viewModel { HomeViewModel(get(), get(), get(), get(), get(), get(), get()) }
 //    viewModel { BookingViewModel(get()) }
     viewModel { MoreViewModel(get(), get(), get(), get()) }
@@ -91,7 +95,7 @@ val viewModelModule = module {
     viewModel { MyPointsViewModel(get(), get()) }
     viewModel { BranchViewModel(get()) }
     viewModel { SearchViewModel() }
-    viewModel { NotificationViewModel(get()) }
+    viewModel { NotificationViewModel(get(), get(), get()) }
 }
 
 val useCaseModule = module {
@@ -127,6 +131,10 @@ val useCaseModule = module {
     factory { GetGenderByServiceTypeUseCase(get()) }
     factory { GetBranchDetailsUseCase(get()) }
     factory { GetNotificationUseCase(get()) }
+    factory { MarkOneNotificationReadUseCase(get()) }
+    factory { MarkAllNotificationsReadUseCase(get()) }
+    factory { SaveUserLocationUseCase(get()) }
+    factory { GetSavedUserLocationUseCase(get()) }
 }
 val repositoryModule = module {
 

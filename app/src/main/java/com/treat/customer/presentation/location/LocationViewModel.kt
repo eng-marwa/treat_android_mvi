@@ -9,13 +9,18 @@ import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.location.Priority
 import com.treat.customer.base.BaseViewModel
 import com.treat.customer.data.datasource.remote.api.NetworkStatus
-import com.treat.customer.data.model.GenderResponse
 import com.treat.customer.data.model.ProfileResponse
-import com.treat.customer.domain.usecases.auth.UpdateLocationUseCase
+import com.treat.customer.domain.usecases.location.GetSavedUserLocationUseCase
+import com.treat.customer.domain.usecases.location.SaveUserLocationUseCase
+import com.treat.customer.domain.usecases.location.UpdateLocationUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 
-class LocationViewModel(private val updateLocationUseCase: UpdateLocationUseCase) :
+class LocationViewModel(
+    private val updateLocationUseCase: UpdateLocationUseCase,
+    private val saveUserLocationUseCase: SaveUserLocationUseCase,
+    private val getSavedUserLocationUseCase: GetSavedUserLocationUseCase
+) :
     BaseViewModel() {
     fun isGpsEnabled(context: Context): Boolean {
         val locationManager = context.getSystemService(Context.LOCATION_SERVICE) as LocationManager
@@ -51,6 +56,18 @@ class LocationViewModel(private val updateLocationUseCase: UpdateLocationUseCase
             }
         }
 
+    }
+
+    fun getCurrentLocation() {
+
+    }
+
+    fun getSavedLocation(): String? {
+        return getSavedUserLocationUseCase.getSavedLocation()
+    }
+
+    fun saveLocation(latitude: Double, longitude: Double) {
+        saveUserLocationUseCase.saveUserLocation(latitude, longitude)
     }
 
 

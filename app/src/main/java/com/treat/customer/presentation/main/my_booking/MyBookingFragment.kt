@@ -1,14 +1,17 @@
 package com.treat.customer.presentation.main.my_booking
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
+import com.treat.customer.MainActivity
 import com.treat.customer.R
 import com.treat.customer.data.model.MyBookingData
 import com.treat.customer.databinding.FragmentMyBookingBinding
+import com.treat.customer.presentation.auth.login.LoginViewModel
 import com.treat.customer.presentation.main.ui.home.HomeTabAdapter
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -23,6 +26,8 @@ class MyBookingFragment : Fragment() {
         MyBookingAdapter(this)
     }
     private val viewModel: MyBookingViewModel by viewModel<MyBookingViewModel>()
+    private val authViewModel: LoginViewModel by viewModel<LoginViewModel>()
+
     private var _binding: FragmentMyBookingBinding? = null
     private val binding get() = _binding!!
     override fun onCreateView(
@@ -43,6 +48,21 @@ class MyBookingFragment : Fragment() {
     }
 
     private fun initViews() {
+        if (authViewModel.getUserData()?.data?.token == null) {
+            binding.lnMyBooking.visibility = View.GONE
+            binding.frMyBooking.visibility = View.VISIBLE
+        } else {
+            binding.lnMyBooking.visibility = View.VISIBLE
+            binding.frMyBooking.visibility = View.GONE
+        }
+        binding.unAuthLayout.btnLogin.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), MainActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                }.putExtra("Fragment", R.string.my_booking)
+            )
+        }
         setupTabs()
         setupAppBar()
 

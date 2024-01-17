@@ -36,6 +36,8 @@ interface IUserAuthRepository {
 
     fun getSavedGender(): GenderData?
     fun saveGender(gender: GenderData)
+    fun saveUserLocation(lat: Double, lon: Double)
+    fun getSavedLocation(): String?
 
 
 }

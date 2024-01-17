@@ -13,6 +13,7 @@ class PreferenceHelper(private val sharedPreferences: SharedPreferences) {
     //region var
     private val USER_DATA = "user_data"
     private val USER_TOKEN = "user_token"
+    private val LOCATION = "location"
     private val IS_LOGGED_IN = "login_status"
     private val LANGUAGE = "language"
     private val GENDER = "gender"
@@ -41,6 +42,11 @@ class PreferenceHelper(private val sharedPreferences: SharedPreferences) {
         get() = sharedPreferences[USER_TOKEN]
         set(value) {
             sharedPreferences[USER_TOKEN] = value
+        }
+    var location: String?
+        get() = sharedPreferences[LOCATION]
+        set(value) {
+            sharedPreferences[LOCATION] = value
         }
 
     var fcm: String?

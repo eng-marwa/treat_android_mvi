@@ -14,6 +14,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.treat.customer.MainActivity
 import com.treat.customer.R
 import com.treat.customer.base.BaseException
 import com.treat.customer.base.BaseViewModel
@@ -23,6 +24,8 @@ import com.treat.customer.data.model.SettingsResponse
 import com.treat.customer.data.model.TreatResponse
 import com.treat.customer.databinding.FragmentMoreBinding
 import com.treat.customer.domain.entities.Menu
+import com.treat.customer.domain.entities.menuItems
+import com.treat.customer.domain.entities.unAuthMenuItems
 import com.treat.customer.presentation.ITemActivity
 import com.treat.customer.presentation.auth.login.LoginViewModel
 import com.treat.customer.presentation.auth.profile.GenderAdapter
@@ -37,6 +40,8 @@ class MoreFragment : Fragment(), MenuAdapter.OnItemClick {
 
     private var _binding: FragmentMoreBinding? = null
     private val viewModel: MoreViewModel by viewModel<MoreViewModel>()
+    private val authViewModel: LoginViewModel by viewModel<LoginViewModel>()
+
     private var settingsData: SettingsData? = null
 
     // This property is only valid between onCreateView and
@@ -161,6 +166,12 @@ class MoreFragment : Fragment(), MenuAdapter.OnItemClick {
     private fun initViews() {
         setupAppBar()
         viewModel.getAppSettings()
+        if(authViewModel.getUserData()?.data?.token ==null){
+           menuAdapter.setData(unAuthMenuItems)
+        }else {
+            menuAdapter.setData(menuItems)
+
+        }
         binding.toolBar.frNotification.setOnClickListener {
             startActivity(
                 Intent(requireContext(), ITemActivity::class.java).apply {
@@ -206,6 +217,14 @@ class MoreFragment : Fragment(), MenuAdapter.OnItemClick {
             R.string.disable_account -> viewModel.disableAccount()
             R.string.share -> context?.let {
                 openSharePopup(getString(R.string.share), it)
+            }
+            R.string.login -> {
+                startActivity(
+                    Intent(requireContext(), MainActivity::class.java).apply {
+                        addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                        addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                    }.putExtra("Fragment", item.name)
+                )
             }
 
             else -> {

@@ -27,33 +27,52 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/toolBar" />
 
-    <com.google.android.material.tabs.TabLayout
-        android:id="@+id/tab"
+    <LinearLayout
+        android:id="@+id/lnMyBooking"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:background="@color/grayF6"
+        android:orientation="vertical"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/titleToolBar"
-        app:tabGravity="fill"
-        app:tabIndicatorFullWidth="true"
-        app:tabIndicatorColor="@color/gray4B"
-        app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/gray4B"
-        app:tabTextAppearance="@style/TabLayoutStyle"
-        app:tabTextColor="@color/gray77"
-        android:layout_marginHorizontal="@dimen/_8sdp"
-        tools:ignore="SpeakableTextPresentCheck" />
+        app:layout_constraintTop_toBottomOf="@+id/titleToolBar">
 
-    <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:background="@color/grayF6"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="@color/gray4B"
+            app:tabIndicatorFullWidth="true"
+            app:tabMode="fixed"
+            app:tabSelectedTextColor="@color/gray4B"
+            app:tabTextAppearance="@style/TabLayoutStyle"
+            app:tabTextColor="@color/gray77"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginHorizontal="@dimen/_8sdp"
+            android:layout_marginTop="@dimen/_8sdp" />
+    </LinearLayout>
+
+    <FrameLayout
+        android:id="@+id/frMyBooking"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:layout_marginHorizontal="@dimen/_8sdp"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tab" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <include
+            android:id="@+id/unAuthLayout"
+            layout="@layout/unauth_layout" />
+
+    </FrameLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

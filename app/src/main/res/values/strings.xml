@@ -118,4 +118,7 @@
     <string name="not_found">No results found</string>
     <string name="not_found_text">We could not find anything based on your search\nTry verifying spelling, location and date or changing\nthe category then search again.</string>
     <string name="mark_as_read">Mark all as read</string>
+    <string name="location_branch">BranchLocation</string>
+    <string name="go_to_login"><u>Go to Login</u></string>
+    <string name="login">Login</string>
 </resources>

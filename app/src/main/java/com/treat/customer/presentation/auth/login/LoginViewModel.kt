@@ -1,6 +1,5 @@
 package com.treat.customer.presentation.auth.login
 
-import android.util.Log
 import android.util.Patterns
 import androidx.lifecycle.viewModelScope
 import com.treat.customer.base.BaseException
