@@ -3,8 +3,10 @@ package com.treat.customer.di
 import android.content.Context
 import com.treat.customer.data.datasource.interfaces.IBranchRemoteDS
 import com.treat.customer.data.datasource.interfaces.IHomeRemoteDS
+import com.treat.customer.data.datasource.interfaces.INotificationRemoteDS
 import com.treat.customer.data.datasource.interfaces.IUserAuthRemoteDS
 import com.treat.customer.data.datasource.interfaces.IUserMoreRemoteDS
+import com.treat.customer.data.datasource.interfaces.NotificationRemoteDSImpl
 import com.treat.customer.data.datasource.local.prefs.PreferenceHelper
 import com.treat.customer.data.datasource.remote.BranchRemoteDSImpl
 import com.treat.customer.data.datasource.remote.HomeRemoteDSImpl
@@ -17,8 +19,10 @@ import com.treat.customer.domain.repository.BranchRepositoryImpl
 import com.treat.customer.domain.repository.HomeRepositoryImpl
 import com.treat.customer.domain.repository.IBranchRepository
 import com.treat.customer.domain.repository.IHomeRepository
+import com.treat.customer.domain.repository.INotificationRepository
 import com.treat.customer.domain.repository.IUserAuthRepository
 import com.treat.customer.domain.repository.IUserMoreRepository
+import com.treat.customer.domain.repository.NotificationRepositoryImpl
 import com.treat.customer.domain.repository.UserAuthRepositoryImpl
 import com.treat.customer.domain.repository.UserMoreRepositoryImpl
 import com.treat.customer.domain.usecases.auth.DisableAccountUseCase
@@ -52,10 +56,12 @@ import com.treat.customer.domain.usecases.more.GetFQAUseCase
 import com.treat.customer.domain.usecases.more.GetMyPointsUseCase
 import com.treat.customer.domain.usecases.more.GetMyWalletUseCase
 import com.treat.customer.domain.usecases.more.TransferPointsToWalletUseCase
+import com.treat.customer.domain.usecases.notifications.GetNotificationUseCase
 import com.treat.customer.presentation.auth.login.LoginViewModel
 import com.treat.customer.presentation.auth.otp.OTViewModel
 import com.treat.customer.presentation.auth.profile.ProfileViewModel
 import com.treat.customer.presentation.location.LocationViewModel
+import com.treat.customer.presentation.main.notification.NotificationViewModel
 import com.treat.customer.presentation.main.search.SearchViewModel
 import com.treat.customer.presentation.main.ui.branches.BranchViewModel
 import com.treat.customer.presentation.main.ui.favorites.FavoritesViewModel
@@ -85,6 +91,7 @@ val viewModelModule = module {
     viewModel { MyPointsViewModel(get(), get()) }
     viewModel { BranchViewModel(get()) }
     viewModel { SearchViewModel() }
+    viewModel { NotificationViewModel(get()) }
 }
 
 val useCaseModule = module {
@@ -119,6 +126,7 @@ val useCaseModule = module {
     factory { GetBranchesByServiceType(get()) }
     factory { GetGenderByServiceTypeUseCase(get()) }
     factory { GetBranchDetailsUseCase(get()) }
+    factory { GetNotificationUseCase(get()) }
 }
 val repositoryModule = module {
 
@@ -133,6 +141,9 @@ val repositoryModule = module {
     }
     single<IBranchRepository> {
         BranchRepositoryImpl(get())
+    }
+    single<INotificationRepository> {
+        NotificationRepositoryImpl(get())
     }
 }
 
@@ -149,6 +160,9 @@ val dataSourceModule = module {
     }
     single {
         BranchRemoteDSImpl(get()) as IBranchRemoteDS
+    }
+    single {
+        NotificationRemoteDSImpl(get()) as INotificationRemoteDS
     }
 }
 

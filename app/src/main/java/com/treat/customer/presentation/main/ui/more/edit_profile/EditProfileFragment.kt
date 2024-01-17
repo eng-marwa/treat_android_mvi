@@ -21,6 +21,7 @@ import com.treat.customer.databinding.FragmentLoginBinding
 import com.treat.customer.presentation.auth.login.LoginViewModel
 import com.treat.customer.presentation.auth.profile.GenderBottomSheet
 import com.treat.customer.presentation.auth.profile.ProfileViewModel
+import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -104,7 +105,15 @@ class EditProfileFragment : Fragment(), GenderBottomSheet.GenderSelect {
                         binding.etBirthDate.text = selectedDate
                     } else {
                         // Show an error message as the age is below 18
-                        showToast(getString(R.string.enter_validate_birth_date))
+                        showSnack(
+                            binding.root,
+                            getString(R.string.enter_validate_birth_date),
+                            null,
+                            isError = true,
+                            showButton = false,
+                            buttonTitle = null,
+                            onClick = null
+                        )
                     }
                 },
                 currentYear,
@@ -148,7 +157,16 @@ class EditProfileFragment : Fragment(), GenderBottomSheet.GenderSelect {
     }
 
     private fun onFetchProfileFailed(throwable: BaseException?) {
-            showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
+
     }
 
     private fun onFetchProfileSuccess(data: ProfileResponse?) {
@@ -162,23 +180,70 @@ class EditProfileFragment : Fragment(), GenderBottomSheet.GenderSelect {
 
     private fun onUpdateProfileFailed(throwable: BaseException?) {
         if (throwable?.getMessage() == "INVALID_NAME_ERROR") {
-            showToast(getString(R.string.name_error))
+            showSnack(
+                binding.root,
+                getString(R.string.name_error),
+                null,
+                isError = true,
+                showButton = false,
+                buttonTitle = null,
+                onClick = null
+            )
         } else if (throwable?.getMessage() == "INVALID_GENDER_ERROR") {
-            showToast(getString(R.string.select_gender_error))
+            showSnack(
+                binding.root,
+                getString(R.string.select_gender_error),
+                null,
+                isError = true,
+                showButton = false,
+                buttonTitle = null,
+                onClick = null
+            )
         }else if (throwable?.getMessage() == "INVALID_EMAIL_ERROR") {
-            showToast(getString(R.string.email_validation_error))
+            showSnack(
+                binding.root,
+                getString(R.string.email_validation_error),
+                null,
+                isError = true,
+                showButton = false,
+                buttonTitle = null,
+                onClick = null
+            )
         } else {
-            showToast(throwable?.getMessage())
-        }
+            showSnack(
+                binding.root,
+                throwable?.getMessage(),
+                null,
+                isError = true,
+                showButton = false,
+                buttonTitle = null,
+                onClick = null
+            )        }
     }
 
     private fun onUpdateProfileSuccess(data: ProfileResponse?) {
         loginViewModel.saveUserData(data)
-        showToast(getString(R.string.user_profile_update_successfully))
+        showSnack(
+            binding.root,
+            getString(R.string.user_profile_update_successfully),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onGenderTypeFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onGenderTypeSuccess(data: GenderResponse?) {

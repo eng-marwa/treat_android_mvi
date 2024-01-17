@@ -13,13 +13,12 @@ import com.treat.customer.data.model.ServiceCategoriesData
 import com.treat.customer.databinding.FragmentCategoryBottomSheetBinding
 import com.treat.customer.domain.entities.MultipleChoiceData
 import com.treat.customer.presentation.main.search.SearchViewModel
-import com.treat.customer.utils.extensions.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class CategoryBottomSheet(private val onSelectItems: OnSelectItems) : BottomSheetDialogFragment() ,
     FilterCategoryAdapter.MultiOptionClick {
-    private val selectedItems = arrayListOf<ServiceCategoriesData>()
+    private val selectedItems = mutableSetOf<ServiceCategoriesData>()
     private var _binding: FragmentCategoryBottomSheetBinding? = null
     private val binding get() = _binding!!
     private val categoryAdapter by lazy {
@@ -39,6 +38,7 @@ class CategoryBottomSheet(private val onSelectItems: OnSelectItems) : BottomShee
         _binding = FragmentCategoryBottomSheetBinding.inflate(inflater, container, false)
         return binding.root
     }
+    private val viewModel: SearchViewModel by viewModel<SearchViewModel>()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -55,8 +55,12 @@ class CategoryBottomSheet(private val onSelectItems: OnSelectItems) : BottomShee
         binding.btnAdd.setOnClickListener {
             if(selectedItems.isNotEmpty()){
                 onSelectItems.onItemsSelected(selectedItems)
+                viewModel.selectedItems = selectedItems.toMutableList()
                 dismiss()
             }
+        }
+        if(viewModel.selectedItems.isNotEmpty()){
+            categoryAdapter.setSelectedItems(viewModel.selectedItems)
         }
     }
 
@@ -64,23 +68,20 @@ class CategoryBottomSheet(private val onSelectItems: OnSelectItems) : BottomShee
         binding.rvCategories.layoutManager =
             LinearLayoutManager(requireContext())
         binding.rvCategories.adapter = categoryAdapter
-
     }
-
     fun setCategoriesList(categories: List<ServiceCategoriesData>) {
         categoryAdapter.setList(categories)
-
     }
-
     interface OnSelectItems {
-        fun onItemsSelected(categories: List<ServiceCategoriesData>)
+        fun onItemsSelected(categories: MutableSet<ServiceCategoriesData>)
     }
-
     override fun onMultiOptionSelect(option: MultipleChoiceData<ServiceCategoriesData>) {
         selectedItems.add(option.data!!)
+        viewModel.selectedItems.add(option.data)
     }
-
     override fun onMultiOptionUnselect(option: MultipleChoiceData<ServiceCategoriesData>) {
         selectedItems.remove(option.data!!)
+        viewModel.selectedItems.remove(option.data)
+
     }
 }

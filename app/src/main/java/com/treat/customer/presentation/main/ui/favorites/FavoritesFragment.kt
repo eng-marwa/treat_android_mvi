@@ -68,14 +68,22 @@ class FavoritesFragment : Fragment(), FavoritesAdapter.OnItemClick  {
 
     private fun onFavoriteBranchFailed(throwable: BaseException?) {
         binding.loader.hide()
-        showToast(throwable?.getMessage())
-    }
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )    }
 
     private fun onFavoriteBranchSuccess(data: BranchesResponse?) {
         binding.loader.hide()
        data?.let {
-           if(it.data!=null)
-           branchAdapter.setBranches(it.data!!.branches)
+           if(it.data!=null) {
+               branchAdapter.setBranches(it.data!!.branches)
+           }
        }
     }
 

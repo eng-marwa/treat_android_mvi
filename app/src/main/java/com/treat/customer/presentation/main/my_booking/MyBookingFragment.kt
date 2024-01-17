@@ -44,8 +44,15 @@ class MyBookingFragment : Fragment() {
 
     private fun initViews() {
         setupTabs()
+        setupAppBar()
 
     }
+
+    private fun setupAppBar() {
+        binding.titleToolBar.lbTitle.setText(R.string.my_booking)
+        binding.titleToolBar.ivBack.visibility = View.VISIBLE
+    }
+
 
     private fun setupTabs() {
         tabTitles = arrayListOf<String>(

@@ -118,10 +118,11 @@ class HomeViewModel(
         serviceType: String?,
         gender: String?,
         lat: String?,
-        lng: String?
+        lng: String?,
+        date: String?,
     ) {
         viewModelScope.launch {
-            getBranchesUseCase.invoke(serviceCategoryIds, serviceType, gender, lat, lng).collect {
+            getBranchesUseCase.invoke(serviceCategoryIds, serviceType, gender, lat, lng,date).collect {
                 val state = when (it.status) {
                     is NetworkStatus.Success -> ViewState.Loaded(data = it.payload?.data!!)
                     is NetworkStatus.Failure -> ViewState.Failed(it.error)

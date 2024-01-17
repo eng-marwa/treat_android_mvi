@@ -31,6 +31,7 @@ interface IHomeRepository {
         serviceTypeId: String?,
         gender: String?,
         lat: String?,
-        lng: String?
+        lng: String?,
+        date: String?,
     ): Flow<NetworkResource<BranchesResponse>>
 }

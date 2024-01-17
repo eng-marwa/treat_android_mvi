@@ -73,8 +73,7 @@ interface ApiService {
     @FormUrlEncoded
     @POST("client/updateLocation")
     suspend fun updateLocation(
-        @Field("address_lat") latitude: Double,
-        @Field("address_long") longitude: Double
+        @Field("address_lat") latitude: Double, @Field("address_long") longitude: Double
     ): Response<ProfileResponse>
 
     @POST("client/disableAccount")
@@ -132,6 +131,7 @@ interface ApiService {
         @Query("gender") gender: String?,
         @Query("address_lat") lat: String?,
         @Query("address_lng") lng: String?,
+        @Query("date") date: String?,
     ): Response<BranchesResponse>
 
     @GET("client/branches/{id}")
@@ -152,6 +152,7 @@ interface ApiService {
     @GET("client/notifications")
     suspend fun getNotifications(
     ): Response<NotificationResponse>
+
 
     @GET("client/notifications/{notificationId}")
     suspend fun deleteNotifications(
@@ -175,20 +176,17 @@ interface ApiService {
 
     @GET("client/services/schedule-specific-day")
     suspend fun getScheduleSpecificDays(
-        @Query("service_id") serviceId: String,
-        @Query("day") days: String
+        @Query("service_id") serviceId: String, @Query("day") days: String
     ): Response<AvailableTimeResponse>
 
     @GET("client/services/hours")
     suspend fun getServiceHours(
-        @Query("service_id") serviceId: String,
-        @Query("day") day: String
+        @Query("service_id") serviceId: String, @Query("day") day: String
     ): Response<AvailableTimeResponse>
 
     @GET("client/services/free-hours")
     suspend fun getFreeHours(
-        @Query("schedule_id") scheduleId: String,
-        @Query("date") date: String
+        @Query("schedule_id") scheduleId: String, @Query("date") date: String
     ): Response<AvailableTimeResponse>
 
     @GET("general/service-types")

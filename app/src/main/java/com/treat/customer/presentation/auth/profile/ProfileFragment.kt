@@ -19,6 +19,7 @@ import com.treat.customer.databinding.FragmentProfileBinding
 import com.treat.customer.presentation.auth.login.LoginViewModel
 import com.treat.customer.presentation.location.LocationViewModel
 import com.treat.customer.utils.extensions.hideKeyboard
+import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -31,7 +32,7 @@ class ProfileFragment : Fragment(), GenderBottomSheet.GenderSelect,
         fun newInstance() = ProfileFragment()
     }
 
-    private var genderId: String?=null
+    private var genderId: String? = null
     private val genderList: MutableList<GenderData> = mutableListOf()
 
     private val genderBottomSheet by lazy {
@@ -90,13 +91,45 @@ class ProfileFragment : Fragment(), GenderBottomSheet.GenderSelect,
 
     private fun onUpdateProfileFailed(throwable: BaseException?) {
         if (throwable?.getMessage() == "INVALID_NAME_ERROR") {
-            showToast(getString(R.string.name_error))
+            showSnack(
+                binding.root,
+                getString(R.string.name_error),
+                null,
+                isError = true,
+                showButton = false,
+                buttonTitle = null,
+                onClick = null
+            )
         } else if (throwable?.getMessage() == "INVALID_GENDER_ERROR") {
-            showToast(getString(R.string.select_gender_error))
+            showSnack(
+                binding.root,
+                getString(R.string.select_gender_error),
+                null,
+                isError = true,
+                showButton = false,
+                buttonTitle = null,
+                onClick = null
+            )
         } else if (throwable?.getMessage() == "INVALID_EMAIL_ERROR") {
-            showToast(getString(R.string.email_validation_error))
+            showSnack(
+                binding.root,
+                getString(R.string.email_validation_error),
+                null,
+                isError = true,
+                showButton = false,
+                buttonTitle = null,
+                onClick = null
+            )
         } else {
-            showToast(throwable?.getMessage())
+            showSnack(
+                binding.root,
+                throwable?.getMessage(),
+                null,
+                isError = true,
+                showButton = false,
+                buttonTitle = null,
+                onClick = null
+            )
         }
     }
 
@@ -107,7 +140,15 @@ class ProfileFragment : Fragment(), GenderBottomSheet.GenderSelect,
     }
 
     private fun onUpdateLocationFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onUpdateLocationSuccess(data: ProfileResponse?) {
@@ -115,7 +156,15 @@ class ProfileFragment : Fragment(), GenderBottomSheet.GenderSelect,
     }
 
     private fun onGenderTypeFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onGenderTypeSuccess(data: GenderResponse?) {
@@ -138,7 +187,7 @@ class ProfileFragment : Fragment(), GenderBottomSheet.GenderSelect,
         }
         binding.btnConfirm.setOnClickListener {
             viewModel.updateUserProfileFromAuth(
-                binding.etName.text.toString(),genderId?:""
+                binding.etName.text.toString(), genderId ?: ""
             )
             context?.let {
                 val locationHelper = LocationHelper(it);

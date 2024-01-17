@@ -55,9 +55,10 @@ class HomeRemoteDSImpl(private val apiService: ApiService) : IHomeRemoteDS, Base
         serviceTypeId: String?,
         gender: String?,
         lat: String?,
-        lng: String?
+        lng: String?,
+        date: String?
     ): Flow<NetworkResource<BranchesResponse>> {
-        return apiRequest { apiService.getBranches(serviceCategoryIds, serviceTypeId, gender, lat, lng) }
+        return apiRequest { apiService.getBranches(serviceCategoryIds, serviceTypeId, gender, lat, lng ,date) }
     }
 
     override suspend fun getGenderByServiceType(serviceTypeId: String): Flow<NetworkResource<GenderResponse>> {

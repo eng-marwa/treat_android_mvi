@@ -28,6 +28,7 @@ import com.treat.customer.presentation.auth.login.LoginViewModel
 import com.treat.customer.presentation.auth.profile.GenderAdapter
 import com.treat.customer.presentation.main.HomeActivity
 import com.treat.customer.utils.extensions.showDialog
+import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -91,7 +92,15 @@ class MoreFragment : Fragment(), MenuAdapter.OnItemClick {
     }
 
     private fun onAppSettingsFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onAppSettingsSuccess(data: SettingsResponse) {
@@ -100,20 +109,52 @@ class MoreFragment : Fragment(), MenuAdapter.OnItemClick {
     }
 
     private fun onDisableAccountFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onDisableAccountSuccess(data: TreatResponse?) {
-        showToast(data?.message)
+        showSnack(
+            binding.root,
+            data?.message,
+            null,
+            isError = false,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
         activity?.finish()
     }
 
     private fun onLogoutFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onLogoutSuccess(data: TreatResponse?) {
-        showToast(data?.message)
+        showSnack(
+            binding.root,
+            data?.message,
+            null,
+            isError = false,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
         activity?.finish()
     }
 

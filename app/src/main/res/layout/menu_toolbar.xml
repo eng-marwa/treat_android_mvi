@@ -53,6 +53,7 @@
             android:src="@drawable/bx_bell" />
 
         <TextView
+            android:id="@+id/lbNotificationCount"
             android:layout_width="@dimen/_10sdp"
             android:layout_height="@dimen/_10sdp"
             android:layout_marginStart="@dimen/_5sdp"

@@ -15,6 +15,7 @@ import com.treat.customer.databinding.FragmentMoreBinding
 import com.treat.customer.databinding.FragmentMyWalletBinding
 import com.treat.customer.presentation.auth.login.LoginViewModel
 import com.treat.customer.presentation.main.ui.more.MoreViewModel
+import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -68,7 +69,15 @@ class ContactUsFragment : Fragment() {
         if (context?.let { sendIntent.resolveActivity(it.packageManager) } != null) {
             startActivity(sendIntent)
         } else {
-            showToast(getString(R.string.something_wrong))
+            showSnack(
+                binding.root,
+                getString(R.string.something_wrong),
+                null,
+                isError = true,
+                showButton = false,
+                buttonTitle = null,
+                onClick = null
+            )
 
         }
     }
@@ -76,7 +85,6 @@ class ContactUsFragment : Fragment() {
     private fun sendEmail() {
         val userEmail = loginViewModel.getUserData()?.data?.email
         val mailtoUri = Uri.parse("mailto:$email")
-        showToast(email)
         val emailIntent = Intent(Intent.ACTION_SENDTO, mailtoUri).apply {
            putExtra(Intent.EXTRA_EMAIL, arrayOf(email))
            putExtra(Intent.EXTRA_CC, arrayOf(userEmail))

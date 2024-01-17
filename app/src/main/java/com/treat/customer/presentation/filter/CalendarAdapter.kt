@@ -1,6 +1,7 @@
 package com.treat.customer.presentation.filter
 
 import android.content.Context
+import android.graphics.Typeface
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -39,10 +40,6 @@ class CalendarAdapter(private val onDateSelected: FilterBottomSheet) :
         notifyDataSetChanged()
     }
 
-    fun resetDate() {
-        TODO("Not yet implemented")
-    }
-
     inner class CalenderViewHolder(private val binding: ItemCalendarDayBinding) :
         RecyclerView.ViewHolder(binding.root) {
         private val context: Context = binding.root.context
@@ -50,7 +47,7 @@ class CalendarAdapter(private val onDateSelected: FilterBottomSheet) :
             binding.dateTextView.text = day.dayNo
             binding.dayTextView.text = day.dayName
             if (day == selectedDate) {
-                binding.root.background.setTint(context.getColor(R.color.green5E));
+                binding.root.background.setTint(context.getColor(R.color.orangeB2));
                 binding.dayTextView.setTextColor(context.getColor(R.color.white))
                 binding.dateTextView.setTextColor(context.getColor(R.color.white))
                 binding.root.isClickable = true
@@ -63,17 +60,19 @@ class CalendarAdapter(private val onDateSelected: FilterBottomSheet) :
                 binding.root.isClickable = false
                 binding.root.isEnabled = false
 
-
             } else {
                 if (isCurrentDay(day.dayNo, monthYear)) {
-                    binding.root.background.setTint(context.getColor(R.color.orangeB2));
-                    binding.dayTextView.setTextColor(context.getColor(R.color.white))
-                    binding.dateTextView.setTextColor(context.getColor(R.color.white))
+                    binding.dayTextView.setTextColor(context.getColor(R.color.orangeB2))
+                    binding.dateTextView.setTextColor(context.getColor(R.color.orangeB2))
+                    binding.dateTextView.typeface = Typeface.DEFAULT_BOLD
+                    binding.dayTextView.typeface = Typeface.DEFAULT_BOLD
 
                 } else {
                     binding.root.background.setTint(context.getColor(R.color.grayEB));
                     binding.dayTextView.setTextColor(context.getColor(R.color.black))
                     binding.dateTextView.setTextColor(context.getColor(R.color.black))
+                    binding.dateTextView.typeface = Typeface.DEFAULT
+                    binding.dayTextView.typeface = Typeface.DEFAULT
                 }
                 binding.root.isClickable = true
                 binding.root.isEnabled = true

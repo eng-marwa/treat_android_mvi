@@ -24,6 +24,6 @@ interface IHomeRemoteDS {
     suspend fun getAvailableTimes(): Flow<NetworkResource<AvailableTimeResponse>>
     suspend fun addBranchToFavorite(branchId: String): Flow<NetworkResource<AddFavoriteResponse>>
     suspend fun viewFavoriteBranches(): Flow<NetworkResource<BranchesResponse>>
-    suspend fun getBranchesByServiceType(        serviceCategoryIds: ArrayList<String>?, serviceTypeId: String?, gender: String?, lat: String?, lng: String?): Flow<NetworkResource<BranchesResponse>>
+    suspend fun getBranchesByServiceType(serviceCategoryIds: ArrayList<String>?, serviceTypeId: String?, gender: String?, lat: String?, lng: String?, date:String?): Flow<NetworkResource<BranchesResponse>>
     suspend fun getGenderByServiceType(serviceTypeId: String): Flow<NetworkResource<GenderResponse>>
 }

@@ -172,7 +172,15 @@ class HomeFragment : Fragment(), ServiceTypeAdapter.OnItemClick, FilterBottomShe
 
     private fun onServiceCategoriesFailed(throwable: BaseException?) {
         binding.loader.hide()
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onServiceCategoriesSuccess(data: ServiceCategoriesResponse?) {
@@ -186,13 +194,13 @@ class HomeFragment : Fragment(), ServiceTypeAdapter.OnItemClick, FilterBottomShe
         }
         setupTabs()
         if (viewModel.serviceType!!.id == "1") {
-            showToast(viewModel.genderId)
             viewModel.getBranches(
                 if (categories[0].id == null) null else arrayListOf(categories[0].id!!),
                 viewModel.serviceType?.id!!,
                 viewModel.genderId,
                 lat = null,
-                lng = null
+                lng = null,
+                date = null
             )
         } else {
             viewModel.getBranches(
@@ -200,7 +208,8 @@ class HomeFragment : Fragment(), ServiceTypeAdapter.OnItemClick, FilterBottomShe
                 viewModel.serviceType?.id!!,
                 null,
                 lat = null,
-                lng = null
+                lng = null,
+                date = null
             )
         }
     }
@@ -237,7 +246,15 @@ class HomeFragment : Fragment(), ServiceTypeAdapter.OnItemClick, FilterBottomShe
 //        }
 //    }
     private fun onViewBranchesFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onViewBranchesSuccess(data: BranchesResponse?) {
@@ -251,8 +268,15 @@ class HomeFragment : Fragment(), ServiceTypeAdapter.OnItemClick, FilterBottomShe
 
     private fun onSliderFailed(throwable: BaseException?) {
         binding.loader.hide()
-
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onSliderSuccess(data: HomeSliderResponse?) {
@@ -285,8 +309,15 @@ class HomeFragment : Fragment(), ServiceTypeAdapter.OnItemClick, FilterBottomShe
                 searchBottomSheet.show(childFragmentManager, "filter")
             }
         }
+        binding.searchLayout.searchBar.setOnClickListener {
+            startActivity(
+                Intent(requireContext(), ITemActivity::class.java).apply {
+                    addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+                    addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP)
+                }.putExtra("ITEM", R.string.search)
+            )
+        }
         binding.searchLayout.ivLocation.setOnClickListener {
-
         }
         binding.toolBar.frNotification.setOnClickListener {
             startActivity(
@@ -335,9 +366,10 @@ class HomeFragment : Fragment(), ServiceTypeAdapter.OnItemClick, FilterBottomShe
                     viewModel.getBranches(
                         if (categories[tab?.position!!].id == null) null else arrayListOf(categories[tab.position].id!!),
                         viewModel.serviceType?.id!!,
-                        if(binding.subTab.selectedTabPosition == 0) null else "${binding.subTab.selectedTabPosition + 1}",
+                        if (binding.subTab.selectedTabPosition == 0) null else "${binding.subTab.selectedTabPosition + 1}",
                         lat = null,
-                        lng = null
+                        lng = null,
+                        date = null
                     )
                 } else {
                     viewModel.getBranches(
@@ -345,7 +377,8 @@ class HomeFragment : Fragment(), ServiceTypeAdapter.OnItemClick, FilterBottomShe
                         viewModel.serviceType?.id!!,
                         null,
                         lat = null,
-                        lng = null
+                        lng = null,
+                        date = null
                     )
                 }
             }
@@ -362,7 +395,7 @@ class HomeFragment : Fragment(), ServiceTypeAdapter.OnItemClick, FilterBottomShe
 //        if (binding.subTab.tabCount != 0) {
 //            binding.subTab.removeAllTabs()
 //        }
-        genderTab.add(GenderData(name =  getString(R.string.all)))
+        genderTab.add(GenderData(name = getString(R.string.all)))
         genderTab.add(GenderData("1", getString(R.string.male)))
         genderTab.add(GenderData("2", getString(R.string.female)))
 
@@ -371,26 +404,32 @@ class HomeFragment : Fragment(), ServiceTypeAdapter.OnItemClick, FilterBottomShe
         }
         binding.subTab.addOnTabSelectedListener(object : OnTabSelectedListener {
             override fun onTabSelected(subTab: TabLayout.Tab?) {
-                if (subTab!!.position==0){
+                if (subTab!!.position == 0) {
                     viewModel.genderId = null
-                }else {
+                } else {
                     viewModel.genderId = genderTab[subTab.position].id!!
                 }
                 if (viewModel.serviceType!!.id == "1") {
                     viewModel.getBranches(
-                        if (categories[binding.tab.selectedTabPosition].id == null) null else arrayListOf(categories[binding.tab.selectedTabPosition].id!!),
+                        if (categories[binding.tab.selectedTabPosition].id == null) null else arrayListOf(
+                            categories[binding.tab.selectedTabPosition].id!!
+                        ),
                         viewModel.serviceType?.id!!,
-                        if(viewModel.genderId==null) null else genderTab[subTab.position].id!!,
+                        if (viewModel.genderId == null) null else genderTab[subTab.position].id!!,
                         lat = null,
-                        lng = null
+                        lng = null,
+                        date = null
                     )
                 } else {
                     viewModel.getBranches(
-                        if (categories[binding.tab.selectedTabPosition].id == null) null else arrayListOf(categories[binding.tab.selectedTabPosition].id!!),
+                        if (categories[binding.tab.selectedTabPosition].id == null) null else arrayListOf(
+                            categories[binding.tab.selectedTabPosition].id!!
+                        ),
                         viewModel.serviceType?.id!!,
                         null,
                         lat = null,
-                        lng = null
+                        lng = null,
+                        date = null
                     )
                 }
             }

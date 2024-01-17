@@ -77,19 +77,27 @@ class HomeTabFragment : Fragment(), BranchAdapter.OnItemClick , HomeTabAdapter.D
     }
 
     private fun onViewBranchesFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onViewBranchesSuccess(data: BranchesResponse?) {
         data?.let {
-            if(it.data!=null)
-            branchAdapter.setBranches(it.data!!.branches)
+            if(it.data!=null) {
+                branchAdapter.setBranches(it.data!!.branches)
+            }
         }
 
     }
 
     private fun initViews() {
-        showToast("printed")
 //        viewModel.getBranches(
 //            categoryId, serviceTypeId,
 //            genderId,

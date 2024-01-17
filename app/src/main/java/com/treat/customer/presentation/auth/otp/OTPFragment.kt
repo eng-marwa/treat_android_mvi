@@ -23,6 +23,7 @@ import com.treat.customer.databinding.FragmentOTBinding
 import com.treat.customer.presentation.auth.login.LoginViewModel
 import com.treat.customer.presentation.main.HomeActivity
 import com.treat.customer.utils.extensions.hideKeyboard
+import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -84,11 +85,27 @@ class OTPFragment : Fragment() {
     }
 
     private fun onResendCodeFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onResendCodeSuccess(data: TreatResponse?) {
-        showToast(getString(R.string.check_phone_number))
+        showSnack(
+            binding.root,
+            getString(R.string.check_phone_number),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
 
     }
 
@@ -111,7 +128,15 @@ class OTPFragment : Fragment() {
     }
 
     private fun onVerifyAccountFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun initViews() {

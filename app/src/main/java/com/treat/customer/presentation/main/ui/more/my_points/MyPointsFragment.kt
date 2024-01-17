@@ -15,6 +15,7 @@ import com.treat.customer.data.model.MyPointsResponse
 import com.treat.customer.data.model.TransferPointsResponse
 import com.treat.customer.databinding.FragmentMyPointsBinding
 import com.treat.customer.utils.DateTimePickerManager
+import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -89,15 +90,39 @@ class MyPointsFragment : Fragment() {
     }
 
     private fun onPointTransferFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onPointTransferSuccess(data: TransferPointsResponse) {
-        showToast(getString(R.string.points_transfer_successfully))
+        showSnack(
+            binding.root,
+            getString(R.string.points_transfer_successfully),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onMyPointsFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onMyPointsSuccess(data: MyPointsResponse) {

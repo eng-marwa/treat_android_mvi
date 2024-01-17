@@ -13,6 +13,7 @@ import com.treat.customer.base.BaseException
 import com.treat.customer.base.BaseViewModel
 import com.treat.customer.data.model.MyWalletResponse
 import com.treat.customer.databinding.FragmentMyWalletBinding
+import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -67,7 +68,15 @@ class MyWalletFragment : Fragment() {
     }
 
     private fun onMyWalletFailed(throwable: BaseException?) {
-        showToast(throwable?.getMessage())
+        showSnack(
+            binding.root,
+            throwable?.getMessage(),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onMyWalletSuccess(data: MyWalletResponse) {

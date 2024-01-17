@@ -13,6 +13,7 @@ import com.treat.customer.base.BaseException
 import com.treat.customer.base.BaseViewModel
 import com.treat.customer.data.model.FQAResponse
 import com.treat.customer.databinding.FragmentFQABinding
+import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -60,7 +61,15 @@ class FQAFragment : Fragment() {
     }
 
     private fun onFQAFailed(throwable: BaseException?) {
-      showToast(getString(R.string.something_wrong))
+        showSnack(
+            binding.root,
+            getString(R.string.something_wrong),
+            null,
+            isError = true,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 
     private fun onFQASuccess(data: FQAResponse) {

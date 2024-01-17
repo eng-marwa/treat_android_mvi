@@ -114,4 +114,8 @@
     <string name="add">Add</string>
     <string name="min">min.</string>
     <string name="sar">SAR</string>
+    <string name="my_booking">My Booking</string>
+    <string name="not_found">No results found</string>
+    <string name="not_found_text">We could not find anything based on your search\nTry verifying spelling, location and date or changing\nthe category then search again.</string>
+    <string name="mark_as_read">Mark all as read</string>
 </resources>

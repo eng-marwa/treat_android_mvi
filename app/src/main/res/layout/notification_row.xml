@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/_8sdp"
+    android:layout_marginVertical="@dimen/_5sdp"
+    android:background="@drawable/curved_white"
+    android:padding="@dimen/_5sdp">
+
+
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/ivNotification"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:src="@drawable/grey_circle"
+        android:tint="@color/grayEB"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.circleImageView" />
+
+
+    <TextView
+        android:id="@+id/lbStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_5sdp"
+        android:text="just now"
+        android:textColor="@color/gray77"
+        android:textSize="@dimen/_11ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/ivNow"
+        android:layout_width="@dimen/_8sdp"
+        android:layout_height="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_2sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:src="@drawable/orange_circle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/lbStatus"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/lbNotificationTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:padding="@dimen/_2sdp"
+        android:textColor="@color/gray4B"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toEndOf="@id/ivNotification"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Ryadh" />
+
+    <TextView
+        android:id="@+id/lbNotificationBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:padding="@dimen/_2sdp"
+        android:textColor="@color/gray4B"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="normal"
+        app:layout_constraintStart_toEndOf="@id/ivNotification"
+        app:layout_constraintTop_toBottomOf="@+id/lbNotificationTitle"
+        tools:text="Tacha Beauty Center" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

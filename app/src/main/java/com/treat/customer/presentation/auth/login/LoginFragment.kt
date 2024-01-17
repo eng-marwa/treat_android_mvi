@@ -15,6 +15,7 @@ import com.treat.customer.base.BaseViewModel
 import com.treat.customer.data.model.LoginResponse
 import com.treat.customer.databinding.FragmentLoginBinding
 import com.treat.customer.utils.extensions.hideKeyboard
+import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
 import kotlinx.coroutines.launch
 import org.koin.androidx.viewmodel.ext.android.viewModel
@@ -58,9 +59,25 @@ class LoginFragment : Fragment() {
 
     private fun onLoginFailed(throwable: BaseException?) {
         if(throwable?.getMessage() == "INVALID_PHONE_ERROR"){
-            showToast(getString(R.string.invalid_phone_error_message))
+            showSnack(
+                binding.root,
+                getString(R.string.invalid_phone_error_message),
+                null,
+                isError = true,
+                showButton = false,
+                buttonTitle = null,
+                onClick = null
+            )
         }else {
-            showToast(throwable?.getMessage())
+            showSnack(
+                binding.root,
+                throwable?.getMessage(),
+                null,
+                isError = true,
+                showButton = false,
+                buttonTitle = null,
+                onClick = null
+            )
         }
     }
 
@@ -79,7 +96,15 @@ class LoginFragment : Fragment() {
         watchEditText()
         binding.btnLogin.setOnClickListener {
             if (!binding.ckAgreement.isChecked) {
-                showToast(getString(R.string.please_accept_agreement))
+                showSnack(
+                    binding.root,
+                    getString(R.string.please_accept_agreement),
+                    null,
+                    isError = true,
+                    showButton = false,
+                    buttonTitle = null,
+                    onClick = null
+                )
             } else {
                 viewModel.doLogin(binding.etPhoneNumber.text.toString())
             }

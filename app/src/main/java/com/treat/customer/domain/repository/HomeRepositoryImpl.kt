@@ -50,9 +50,9 @@ class HomeRepositoryImpl(private val iHomeRemoteDS: IHomeRemoteDS) : IHomeReposi
     }
 
     override suspend fun getBranchesByServiceType(
-        serviceCategoryIds: ArrayList<String>?, serviceTypeId: String?, gender: String?, lat: String?, lng: String?
+        serviceCategoryIds: ArrayList<String>?, serviceTypeId: String?, gender: String?, lat: String?, lng: String?,date: String?
     ): Flow<NetworkResource<BranchesResponse>> {
-        return iHomeRemoteDS.getBranchesByServiceType(serviceCategoryIds, serviceTypeId, gender, lat, lng)
+        return iHomeRemoteDS.getBranchesByServiceType(serviceCategoryIds, serviceTypeId, gender, lat, lng,date)
     }
 
     override suspend fun getGenderByServiceType(

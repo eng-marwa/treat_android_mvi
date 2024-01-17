@@ -1,6 +1,7 @@
 package com.treat.customer.presentation.filter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -15,9 +16,7 @@ class FilterSelectedCategoryAdapter ():
         RecyclerView.ViewHolder(binding.root) {
         private val context: Context = binding.root.context
         fun bindDataToView(type: ServiceCategoriesData) {
-            binding.lbSelectedITem.text = type.name
-
-
+            binding.lbSelectedITem.text = "${type.name} - ${type.serviceType}"
         }
 
         fun onEvent(type: ServiceCategoriesData) {
@@ -27,7 +26,6 @@ class FilterSelectedCategoryAdapter ():
             }
         }
     }
-
 
     override fun onCreateViewHolder(
         parent: ViewGroup,
@@ -54,9 +52,6 @@ class FilterSelectedCategoryAdapter ():
         notifyDataSetChanged()
     }
 
-    fun resetCategory() {
-        TODO("Not yet implemented")
-    }
 
 
 }

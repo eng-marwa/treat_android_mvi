@@ -11,7 +11,8 @@ class GetBranchesByServiceType(private val iHomeRepository: IHomeRepository) {
         serviceTypeId: String?,
         gender: String?,
         lat: String?,
-        lng: String?
+        lng: String?,
+        date: String?,
     ): Flow<NetworkResource<BranchesResponse>> =
-        iHomeRepository.getBranchesByServiceType(serviceCategoryIds, serviceTypeId, gender, lat, lng)
+        iHomeRepository.getBranchesByServiceType(serviceCategoryIds, serviceTypeId, gender, lat, lng,date)
 }

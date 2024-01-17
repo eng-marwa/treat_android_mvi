@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.treat.customer.R
 import com.treat.customer.databinding.FragmentChangeLanguageBinding
 import com.treat.customer.domain.entities.Language
+import com.treat.customer.utils.extensions.showSnack
 import com.treat.customer.utils.extensions.showToast
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -62,6 +63,14 @@ class ChangeLanguageFragment : Fragment(), LanguageAdapter.OnItemClick {
     }
 
     override fun itemSelected(item: Language) {
-        showToast(getString(item.name))
+        showSnack(
+            binding.root,
+            getString(item.name),
+            null,
+            isError = false,
+            showButton = false,
+            buttonTitle = null,
+            onClick = null
+        )
     }
 }
