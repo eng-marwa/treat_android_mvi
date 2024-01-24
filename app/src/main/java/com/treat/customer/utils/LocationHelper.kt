@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
 import android.provider.Settings
+import android.util.Log
 import androidx.core.app.ActivityCompat
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -50,11 +51,12 @@ open class LocationHelper(private val context: Context) {
                     // Handle retrieved location here (location.getLatitude(), location.getLongitude())
                     val latitude = location.latitude
                     val longitude = location.longitude
+                    Log.d("TAG", "currentLocation: $latitude , $longitude")
                     locationResultListener?.onLocationResult(latitude, longitude);
 
                 }
             }
-            .addOnFailureListener { e: Exception? -> }
+            .addOnFailureListener { e: Exception? -> Log.d("TAG", "currentLocation: ${e?.message}")}
 
         return
     }

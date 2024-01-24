@@ -89,7 +89,7 @@ class UserAuthRepositoryImpl(
     }
 
     override fun saveUserLocation(lat: Double, lon: Double) {
-        preferenceHelper.location = "$lat,$lon"
+        preferenceHelper.location = "$lat#$lon"
     }
 
     override fun getSavedLocation(): String? {

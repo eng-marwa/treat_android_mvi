@@ -4,9 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.treat.customer.base.BaseViewModel
 import com.treat.customer.data.datasource.remote.api.NetworkStatus
 import com.treat.customer.data.model.BranchDetailsResponse
-import com.treat.customer.data.model.ServiceTypesResponse
 import com.treat.customer.domain.usecases.branches.GetBranchDetailsUseCase
-import com.treat.customer.domain.usecases.home.GetAllServiceCategoriesUseCase
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 

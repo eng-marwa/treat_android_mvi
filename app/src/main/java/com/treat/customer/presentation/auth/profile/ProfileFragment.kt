@@ -186,11 +186,9 @@ class ProfileFragment : Fragment(), GenderBottomSheet.GenderSelect,
             binding.btnMenu.callOnClick()
         }
         binding.btnConfirm.setOnClickListener {
-            viewModel.updateUserProfileFromAuth(
-                binding.etName.text.toString(), genderId ?: ""
-            )
             context?.let {
                 val locationHelper = LocationHelper(it);
+                locationHelper.setLocationResultListener(this)
                 // Check if GPS is enabled
                 if (locationHelper.isGPSEnabled) {
                     locationHelper.currentLocation()
@@ -199,6 +197,7 @@ class ProfileFragment : Fragment(), GenderBottomSheet.GenderSelect,
                     locationHelper.openLocationSettings();
                 }
             }
+
 
         }
         binding.btnBack.setOnClickListener {
@@ -217,6 +216,9 @@ class ProfileFragment : Fragment(), GenderBottomSheet.GenderSelect,
         Log.d("Location", "Latitude: $latitude, Longitude: $longitude")
         locationViewModel.saveLocation(latitude,longitude)
         locationViewModel.updateLocation(latitude, longitude)
+        viewModel.updateUserProfileFromAuth(
+                binding.etName.text.toString(), genderId ?: ""
+            )
 
     }
 }

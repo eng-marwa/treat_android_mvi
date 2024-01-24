@@ -97,6 +97,7 @@ class LoginFragment : Fragment() {
     private fun initViews() {
         watchEditText()
         binding.btnLogin.setOnClickListener {
+            hideKeyboard()
             if (!binding.ckAgreement.isChecked) {
                 showSnack(
                     binding.root,

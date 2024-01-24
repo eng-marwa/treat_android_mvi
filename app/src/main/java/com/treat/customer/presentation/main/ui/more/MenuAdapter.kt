@@ -28,6 +28,9 @@ class MenuAdapter(private var itemClicked: MenuAdapter.OnItemClick? = null) :
             }
             if (menu.name == R.string.logout || menu.name == R.string.disable_account)  {
                 binding.lbItem.setTextColor(context.resources.getColor(R.color.redD4))
+            }else{
+                binding.lbItem.setTextColor(context.resources.getColor(R.color.gray4A))
+
             }
             binding.ivItem.setImageResource(menu.icon)
             binding.lbItem.setText(menu.name)
