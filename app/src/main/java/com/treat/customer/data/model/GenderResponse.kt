@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName
 
 data class GenderResponse(
     @SerializedName("data") var data: ArrayList<GenderData> = arrayListOf()
-
 )
 
 data class GenderData(
